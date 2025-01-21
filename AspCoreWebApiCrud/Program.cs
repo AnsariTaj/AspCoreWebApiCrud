@@ -1,4 +1,6 @@
+using AspCoreWebApiCrud.IServices;
 using AspCoreWebApiCrud.Models;
+using AspCoreWebApiCrud.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -15,7 +17,7 @@ var provider = builder.Services.BuildServiceProvider();
 var config = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddDbContext<StudentContext>(options =>
        options.UseSqlServer(config.GetConnectionString("DbConnection")));
-
+builder.Services.AddScoped<IStudent,Student>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
