@@ -4,31 +4,55 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Student Details</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@{
+    if (TempData["Insert_message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success</strong> @TempData["Insert_message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (TempData["Update_Message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success</strong> @TempData["Update_Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (TempData["Delete_Message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success</strong> @TempData["Delete_Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.id)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.studentName)
+                @Html.DisplayNameFor(model => model.StudentGender)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.studentGender)
+                @Html.DisplayNameFor(model => model.Age)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.age)
+                @Html.DisplayNameFor(model => model.Standard)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.standard)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fatherName)
+                @Html.DisplayNameFor(model => model.FatherName)
             </th>
             <th></th>
         </tr>
@@ -36,27 +60,27 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+           @*  <td>
                 @Html.DisplayFor(modelItem => item.id)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.studentName)
+                @Html.DisplayFor(modelItem => item.StudentGender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.studentGender)
+                @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.age)
+                @Html.DisplayFor(modelItem => item.StudentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.standard)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fatherName)
+                @Html.DisplayFor(modelItem => item.FatherName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @* @Html.ActionLink("Details", "Details", new { id=item.id }) | *@
                 @Html.ActionLink("Delete", "Delete", new { id=item.id })
             </td>
         </tr>
